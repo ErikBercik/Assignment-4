@@ -4,14 +4,18 @@ float sleeperPosX = 300;
 
 
 void setup() {
-  size(400, 400);
+  size(800, 400);
   frameRate(60);
   background(200, 220, 255);
 
   //horizon outline
   line(0, 80, width, 80);
 
-  /////////////SLEEPERS//////////////
+}
+
+void draw() {
+  
+   /////////////SLEEPERS//////////////
 
   rectMode(CORNER);
 
@@ -35,10 +39,11 @@ void setup() {
 
   //track tops
   fill(150);
-  triangle(200, 80, 50, 400, 35, 400); //L
-  triangle(200, 80, 350, 400, 365, 400); //R
+  triangle(width/2, 80, width/2-200, 400, width/2-215, 400); //L
+  triangle(width/2, 80, width/2+100, 400, width/2+115, 400); //R
   //track sides
   fill(120);
-  triangle(200, 80, 50, 400, 60, 400); //L
-  triangle(200, 80, 350, 400, 340, 400); //R
+  triangle(width/2, 80, width/2-200, 400, width/2-190, 400); //L
+  triangle(width/2, 80, width/2+100, 400, width/2+90, 400); //R
 }
+ 
