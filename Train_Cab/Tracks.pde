@@ -1,5 +1,7 @@
 class Tracks {
 
+  
+  
   void drawSleepers() {
 
     /////////////SLEEPERS//////////////
@@ -15,8 +17,11 @@ class Tracks {
     //rect(0, 100, width, 4);
 
     //sleeper width is based on distance to the cab vs horizon
-    fill(130, 85, 60);
-    rect(0, x1, width, sleeperPosX*0.13 );
+//    while (PosX > 0 && PosX <= height) {
+      fill(130, 85, 60);
+      rect(0, sleeperPosX, width, PosX*0.13 );
+      PosX = PosX + PosX*0.3;
+    }
   }
 
   void drawRails() {

@@ -1,8 +1,8 @@
 Tracks tracks;
 
 int horizon = 80;
-float sleeperPosX = 100;
-float x1 = map(sleeperPosX, 0, 400, horizon, 400);
+float PosX;
+float sleeperPosX = map(PosX, 0, 400, horizon, 400);
 
 
 void setup() {
@@ -25,4 +25,7 @@ void draw() {
 
   tracks.drawSleepers();
   tracks.drawRails();
+  
+
+
 }
