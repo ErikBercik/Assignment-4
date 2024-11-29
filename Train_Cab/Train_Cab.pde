@@ -1,6 +1,8 @@
 Tracks tracks;
 
-float sleeperPosX = 300;
+int horizon = 80;
+float sleeperPosX = 300.5;
+float x1 = map(sleeperPosX, 0, 400, horizon, 400);
 
 
 void setup() {
@@ -10,12 +12,18 @@ void setup() {
 
   //horizon outline
   line(0, 80, width, 80);
-
 }
 
 void draw() {
-  
-   /////////////SLEEPERS//////////////
+
+  drawSleepers();
+  drawRails();
+}
+
+
+void drawSleepers() {
+
+  /////////////SLEEPERS//////////////
 
   rectMode(CORNER);
 
@@ -28,8 +36,10 @@ void draw() {
   //rect(0, 100, width, 4);
 
   fill(100, 100, 100);
-  float x1 = map(sleeperPosX, 0, 400, 80, 400);
   rect(0, x1, width, sleeperPosX*0.13 );
+}
+
+void drawRails() {
 
   /////////////RAILS//////////////
 
@@ -39,11 +49,10 @@ void draw() {
 
   //track tops
   fill(150);
-  triangle(width/2, 80, width/2-200, 400, width/2-215, 400); //L
-  triangle(width/2, 80, width/2+100, 400, width/2+115, 400); //R
+  triangle(width/2, horizon, width/2-200, 400, width/2-215, 400); //L
+  triangle(width/2, horizon, width/2+50, 400, width/2+65, 400); //R
   //track sides
   fill(120);
-  triangle(width/2, 80, width/2-200, 400, width/2-190, 400); //L
-  triangle(width/2, 80, width/2+100, 400, width/2+90, 400); //R
+  triangle(width/2, horizon, width/2-200, 400, width/2-190, 400); //L
+  triangle(width/2, horizon, width/2+50, 400, width/2+40, 400); //R
 }
- 
