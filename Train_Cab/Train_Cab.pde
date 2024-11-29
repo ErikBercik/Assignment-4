@@ -10,8 +10,6 @@ float sleeperPosY;
 float mouseConstrainX;
 float cameraPosX; //
 
-
-
 void setup() {
 
   size(800, 400);
@@ -26,8 +24,6 @@ void setup() {
 }
 
 void draw() {
-
-
 
   //handy renderer
   h.setIsHandy(false);
@@ -45,10 +41,7 @@ void draw() {
   rect(0, horizon, width, height); //Base
 
   //sleepers
-
-    tracks.drawSleepers();
-
-  
+  tracks.drawSleepers();
 
   //grass
   fill(190, 195, 180);
@@ -56,14 +49,6 @@ void draw() {
   quad(0, horizon, width/2, horizon, cameraPosX-250, height, 0, height); //L
   quad(width, horizon, width/2, horizon, cameraPosX+100, height, width, height); //R
 
-
   //rails
-
   tracks.drawRails();
-
-
-
-  //  while (x1 >= 0 && x1 <= 400) {
-  //    x1 = x*1.3 + x;
-  //  }
 }
