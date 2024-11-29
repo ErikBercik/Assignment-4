@@ -17,7 +17,7 @@ class Tracks {
     //sleeper width is based on distance to the cab vs horizon
     for (y1 = 0; y1 < height; y1 = (y1 + 1)*1.3) {
       fill(130, 85, 60);
-      h.rect(0, sleeperPosY, width, y1*0.07);
+      rect(0, sleeperPosY, width, y1*0.07);
       sleeperPosY = map(y1, 0, 400, horizon, 400);
     }
   }

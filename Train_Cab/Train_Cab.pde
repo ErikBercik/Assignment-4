@@ -14,6 +14,7 @@ void setup() {
 
   size(800, 400);
   frameRate(60);
+  background(160, 200, 225);
 
   h = new HandyRenderer(this); //handy renderer
 
@@ -26,25 +27,25 @@ void setup() {
 void draw() {
 
   //handy renderer
-  h.setIsHandy(false);
-  h.setRoughness(2);
-  h.setFillGap(0.5);
-  h.setFillWeight(1);
+  h.setIsHandy(true);
+  h.setRoughness(1);
+  h.setFillWeight(5);
 
   mouseConstrainX = constrain(mouseX, 0, 400);
   cameraPosX = map(mouseConstrainX, 0, 400, width/2-20, width/2+20);
 
   //sky
-  background(200, 220, 255);
+  fill(160, 200, 225);
+  h.rect(0, 0, width, 80);
   //ground
-  fill(190, 195, 180);
+  fill(180, 165, 150);
   rect(0, horizon, width, height); //Base
 
   //sleepers
   tracks.drawSleepers();
 
   //grass
-  fill(190, 195, 180);
+  fill(180, 165, 150);
   noStroke();
   quad(0, horizon, width/2, horizon, cameraPosX-250, height, 0, height); //L
   quad(width, horizon, width/2, horizon, cameraPosX+100, height, width, height); //R
