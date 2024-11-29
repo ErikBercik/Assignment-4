@@ -1,7 +1,5 @@
 class Tracks {
 
-  
-  
   void drawSleepers() {
 
     /////////////SLEEPERS//////////////
@@ -17,10 +15,10 @@ class Tracks {
     //rect(0, 100, width, 4);
 
     //sleeper width is based on distance to the cab vs horizon
-//    while (PosX > 0 && PosX <= height) {
+      for(y1 = 0; y1 < height; y1 = (y1 + 1)*1.3) {
       fill(130, 85, 60);
-      rect(0, sleeperPosX, width, PosX*0.13 );
-      PosX = PosX + PosX*0.3;
+      h.rect(0, sleeperPosY, width, y1*0.07);
+      sleeperPosY = map(y1, 0, 400, horizon, 400);
     }
   }
 
@@ -34,11 +32,11 @@ class Tracks {
 
     //track tops
     fill(150);
-    triangle(width/2, horizon, width/2-200, 400, width/2-215, 400); //L
-    triangle(width/2, horizon, width/2+50, 400, width/2+65, 400); //R
+    triangle(width/2, horizon, cameraPosX-200, 400, cameraPosX-215, 400); //L
+    triangle(width/2, horizon, cameraPosX+50, 400, cameraPosX+65, 400); //R
     //track sides
     fill(120);
-    triangle(width/2, horizon, width/2-200, 400, width/2-190, 400); //L
-    triangle(width/2, horizon, width/2+50, 400, width/2+40, 400); //R
+    triangle(width/2, horizon, cameraPosX-200, 400, cameraPosX-190, 400); //L
+    triangle(width/2, horizon, cameraPosX+50, 400, cameraPosX+40, 400); //R
   }
 }
