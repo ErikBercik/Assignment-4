@@ -9,6 +9,7 @@ float y1;
 float sleeperPosY;
 float mouseConstrainX;
 float cameraPosX; //
+float trainSpeed
 
 void setup() {
 
