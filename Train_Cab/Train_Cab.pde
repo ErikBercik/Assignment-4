@@ -8,8 +8,8 @@ int horizon = 80;
 float y1;
 float sleeperPosY;
 float mouseConstrainX;
-float cameraPosX; //
-float trainSpeed
+float cameraPosX; //everything will be referenced on this
+float trainSpeed;
 
 void setup() {
 
@@ -28,9 +28,9 @@ void setup() {
 void draw() {
 
   //handy renderer
-  h.setIsHandy(true);
-  h.setRoughness(1);
-  h.setFillWeight(5);
+  h.setIsHandy(false);
+  h.setRoughness(10);
+  h.setFillWeight(10);
 
   mouseConstrainX = constrain(mouseX, 0, 400);
   cameraPosX = map(mouseConstrainX, 0, 400, width/2-20, width/2+20);
@@ -53,4 +53,6 @@ void draw() {
 
   //rails
   tracks.drawRails();
+  
+  y1 = y1 + 15;
 }
