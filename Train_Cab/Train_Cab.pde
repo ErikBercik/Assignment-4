@@ -16,6 +16,7 @@ float t = 0;
 float cameraShakeX;
 float cameraShakeY;
 PImage imgCab;
+PImage spriteSprite;
 
 void setup() {
 
@@ -32,12 +33,13 @@ void setup() {
   sleepers = new Sleepers();
   cab = new Cab();
   imgCab = loadImage("Cab.png");
+  spriteSprite = loadImage("Sprite.PNG");
 }
 
 void draw() {
 
   //cab shake
-  cameraShakeX = map(sin(noise(t)), -1, 1, -2, 2);  //i thought this was shaking too much so it's been commented out
+  cameraShakeX = map(2*sin(noise(t)), -1, 1, -2, 2);  //i thought this was shaking too much so it's been commented out
   cameraShakeY = map(sin(noise(t)), -1, 1, -3, 3);
   t += 0.05;
 
@@ -63,8 +65,8 @@ void draw() {
   //grass on the sides of the rail (thanks for the idea, it works much better)
   fill(180, 165, 150);
   noStroke();
-  quad(0, horizon, width/2, horizon, cameraPosX-250, height, 0, height); //L
-  quad(width, horizon, width/2, horizon, cameraPosX+100, height, width, height); //R
+  quad(0, horizon, width/2, horizon, cameraPosX-200, height, 0, height); //L
+  quad(width, horizon, width/2, horizon, cameraPosX+150, height, width, height); //R
 
   //rails
   rails.drawRails();

@@ -10,11 +10,12 @@ class Rails {
 
     //track tops
     fill(150);
-    triangle(width/2, horizon, cameraPosX-200, 400, cameraPosX-215, 400); //L
-    triangle(width/2, horizon, cameraPosX+50, 400, cameraPosX+65, 400); //R
+    triangle(width/2, horizon, cameraPosX-150, 400, cameraPosX-165, 400); //L
+    triangle(width/2, horizon, cameraPosX+100, 400, cameraPosX+115, 400); //R
     //track sides
     fill(120);
-    triangle(width/2, horizon, cameraPosX-200, 400, cameraPosX-190, 400); //L
-    triangle(width/2, horizon, cameraPosX+50, 400, cameraPosX+40, 400); //R
+    triangle(width/2, horizon, cameraPosX-150, 400, cameraPosX-140, 400); //L
+    fill(190);
+    triangle(width/2, horizon, cameraPosX+100, 400, cameraPosX+90, 400); //R
   }
 }
