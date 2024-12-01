@@ -2,7 +2,8 @@ import org.gicentre.handy.*;
 
 HandyRenderer h;
 
-Tracks tracks;
+Rails rails;
+Sleepers sleepers;
 
 int horizon = 80;
 float y1;
@@ -22,7 +23,8 @@ void setup() {
   //horizon outline
   line(0, 80, width, 80);
 
-  tracks = new Tracks();
+  rails = new Rails();
+  sleepers = new Sleepers();
 }
 
 void draw() {
@@ -32,6 +34,7 @@ void draw() {
   h.setRoughness(10);
   h.setFillWeight(10);
 
+  //this helps keep the operator in control when on the right side of the cab!
   mouseConstrainX = constrain(mouseX, 0, 400);
   cameraPosX = map(mouseConstrainX, 0, 400, width/2-20, width/2+20);
 
@@ -43,16 +46,14 @@ void draw() {
   rect(0, horizon, width, height); //Base
 
   //sleepers
-  tracks.drawSleepers();
+  sleepers.drawSleepers();
 
-  //grass
+  //grass on the sides of the rail (thanks for the idea, it works much better)
   fill(180, 165, 150);
   noStroke();
   quad(0, horizon, width/2, horizon, cameraPosX-250, height, 0, height); //L
   quad(width, horizon, width/2, horizon, cameraPosX+100, height, width, height); //R
 
   //rails
-  tracks.drawRails();
-  
-  y1 = y1 + 15;
+  rails.drawRails();
 }
