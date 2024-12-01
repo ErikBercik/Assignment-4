@@ -12,6 +12,7 @@ float sleeperPosY;
 float mouseConstrainX;
 float cameraPosX; //everything will be referenced on this
 float trainSpeed;
+float t = 0;
 float cameraShakeX;
 float cameraShakeY;
 PImage imgCab;
@@ -34,6 +35,11 @@ void setup() {
 }
 
 void draw() {
+
+  //cab shake
+  cameraShakeX = map(sin(noise(t)), -1, 1, -2, 2);  //i thought this was shaking too much so it's been commented out
+  cameraShakeY = map(sin(noise(t)), -1, 1, -3, 3);
+  t += 0.05;
 
   //handy renderer
   h.setIsHandy(false);
@@ -62,7 +68,7 @@ void draw() {
 
   //rails
   rails.drawRails();
-  
+
   //cab
   cab.drawCab();
 }
