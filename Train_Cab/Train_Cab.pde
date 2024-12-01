@@ -4,6 +4,7 @@ HandyRenderer h;
 
 Rails rails;
 Sleepers sleepers;
+Cab cab;
 
 int horizon = 80;
 float y1;
@@ -11,6 +12,9 @@ float sleeperPosY;
 float mouseConstrainX;
 float cameraPosX; //everything will be referenced on this
 float trainSpeed;
+float cameraShakeX;
+float cameraShakeY;
+PImage imgCab;
 
 void setup() {
 
@@ -25,6 +29,8 @@ void setup() {
 
   rails = new Rails();
   sleepers = new Sleepers();
+  cab = new Cab();
+  imgCab = loadImage("Cab.png");
 }
 
 void draw() {
@@ -36,7 +42,7 @@ void draw() {
 
   //this helps keep the operator in control when on the right side of the cab!
   mouseConstrainX = constrain(mouseX, 0, 400);
-  cameraPosX = map(mouseConstrainX, 0, 400, width/2-20, width/2+20);
+  cameraPosX = map(mouseConstrainX, 400, 0, width/2-20, width/2+20);
 
   //sky
   fill(160, 200, 225);
@@ -56,4 +62,7 @@ void draw() {
 
   //rails
   rails.drawRails();
+  
+  //cab
+  cab.drawCab();
 }
