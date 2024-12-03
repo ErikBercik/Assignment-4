@@ -15,7 +15,7 @@ class Rails {
     //track sides
     fill(120);
     triangle(width/2, horizon, cameraPosX-150, 400, cameraPosX-140, 400); //L
-    fill(190);
+    fill(170);
     triangle(width/2, horizon, cameraPosX+100, 400, cameraPosX+90, 400); //R
   }
 }
