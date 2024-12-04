@@ -5,6 +5,7 @@ HandyRenderer h;
 Rails rails;
 Sleepers sleepers;
 Cab cab;
+Engine engine;
 
 int horizon = 80;
 float y1;
@@ -17,9 +18,13 @@ float cameraShakeX;
 float cameraShakeY;
 PImage imgCab;
 PImage spriteSprite;
-PVector velocity;
-PVector acceleration; 
+PVector velocity; //this will only be in y direction
+PVector acceleration; //this will only be in y direction
 boolean engineOn = false;
+float gap;
+
+
+Sleepers[] sleeperArray = new Sleepers[20];
 
 void setup() {
 
@@ -33,20 +38,24 @@ void setup() {
   line(0, 80, width, 80);
 
   rails = new Rails();
-  sleepers = new Sleepers();
+  //sleepers = new Sleepers(); //not needed
   cab = new Cab();
   imgCab = loadImage("Cab.png");
   spriteSprite = loadImage("Sprite.PNG");
+  engine = new Engine();
+
+  for (int i = 0; i < sleeperArray.length; i++) {
+    //gap = (height-horizon)/(sleeperArray.length);
+    gap = (gap+sleeperArray.length);
+    sleeperArray[i] = new Sleepers(gap+gap);
+  }
 }
 
 void draw() {
-  
-  //camera shake
-  if(engineOn == true){
-  cameraShakeX = map(2*sin(noise(t)), -1, 1, -2, 2);  //i thought this was shaking too much so it's been commented out
-  cameraShakeY = map(sin(noise(t)), -1, 1, -3, 3);
-  t += 0.05;
-  }
+
+  //check to see what systems are running
+  engine.drawEngine();
+  engine.cameraShake();
 
   //handy renderer
   h.setIsHandy(false);
@@ -65,9 +74,13 @@ void draw() {
   rect(0, horizon, width, height); //Base
 
   //sleepers
-  sleepers.drawSleepers();
+  //sleepers.drawSleepers();
+  //sleepers.drawSingleSleeper();
+  for (int i = 0; i < sleeperArray.length; i++) {
+    sleeperArray[i].drawSingleSleeper();
+  }
 
-  //grass on the sides of the rail (thanks for the idea, it works much better)
+  //grass on the sides of the rail (thanks for the idea, it works much better, trapezoids suck, jk love them)
   fill(180, 165, 150);
   noStroke();
   //quad(0, horizon, width/2, horizon, cameraPosX-200, height, 0, height); //L
