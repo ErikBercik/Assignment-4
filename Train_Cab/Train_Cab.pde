@@ -1,13 +1,13 @@
-import org.gicentre.handy.*;
+//import org.gicentre.handy.*;
 
-HandyRenderer h;
+//HandyRenderer h;
 
 Rails rails;
 Sleepers sleepers;
 Cab cab;
 Engine engine;
 
-int horizon = 80;
+float horizon = 80.0;
 float y1;
 float sleeperPosY;
 float mouseConstrainX;
@@ -24,7 +24,12 @@ boolean engineOn = false;
 float gap;
 
 
-Sleepers[] sleeperArray = new Sleepers[20];
+  float yTop;
+  float yBottom;
+  float x;
+
+
+//Sleepers[] sleeperArray = new Sleepers[20];
 
 void setup() {
 
@@ -32,7 +37,7 @@ void setup() {
   frameRate(60);
   background(160, 200, 225);
 
-  h = new HandyRenderer(this); //handy renderer
+  //  h = new HandyRenderer(this); //handy renderer
 
   //horizon outline
   line(0, 80, width, 80);
@@ -44,23 +49,21 @@ void setup() {
   spriteSprite = loadImage("Sprite.PNG");
   engine = new Engine();
 
-  for (int i = 0; i < sleeperArray.length; i++) {
-    //gap = (height-horizon)/(sleeperArray.length);
-    gap = (gap+sleeperArray.length);
-    sleeperArray[i] = new Sleepers(gap+gap);
-  }
+
 }
 
 void draw() {
+
+  rectMode(CORNERS);
 
   //check to see what systems are running
   engine.drawEngine();
   engine.cameraShake();
 
   //handy renderer
-  h.setIsHandy(false);
-  h.setRoughness(10);
-  h.setFillWeight(10);
+  //  h.setIsHandy(false);
+  //  h.setRoughness(10);
+  //  h.setFillWeight(10);
 
   //this helps keep the operator in control when on the right side of the cab!
   mouseConstrainX = constrain(mouseX, 0, 400);
@@ -68,7 +71,7 @@ void draw() {
 
   //sky
   fill(160, 200, 225);
-  h.rect(0, 0, width, 80);
+  rect(0, 0, width, 80);
   //ground
   fill(180, 165, 150);
   rect(0, horizon, width, height); //Base
@@ -76,15 +79,16 @@ void draw() {
   //sleepers
   //sleepers.drawSleepers();
   //sleepers.drawSingleSleeper();
-  for (int i = 0; i < sleeperArray.length; i++) {
-    sleeperArray[i].drawSingleSleeper();
-  }
+  //for (int i = 0; i < sleeperArray.length; i++) {
+  //  sleeperArray[i].drawSingleSleeper();
+  //}
+  sleepers.drawSleepers();
 
   //grass on the sides of the rail (thanks for the idea, it works much better, trapezoids suck, jk love them)
   fill(180, 165, 150);
   noStroke();
-  //quad(0, horizon, width/2, horizon, cameraPosX-200, height, 0, height); //L
-  //quad(width, horizon, width/2, horizon, cameraPosX+150, height, width, height); //R
+  quad(0, horizon, width/2, horizon, cameraPosX-200, height, 0, height); //L
+  quad(width, horizon, width/2, horizon, cameraPosX+150, height, width, height); //R
 
   //rails
   rails.drawRails();

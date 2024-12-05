@@ -1,5 +1,27 @@
 class Sleepers {
 
+
+  float yTop;
+  float yBottom;
+  float x;
+
+  void drawSleepers() {
+
+    for (x = 0; x < height; x = (1+x)*1.3) {
+      drawSleeper(x);
+    }
+  }
+
+  void drawSleeper(float yTop) {
+
+    rectMode(CORNERS);
+
+    yBottom = yTop*1.07;
+    fill(130, 85, 60);
+    rect(0, yTop + horizon, width, yBottom + horizon);
+  }
+
+}
   //void drawSleepers() {
 
   //  /////////////SLEEPERS//////////////
@@ -22,24 +44,24 @@ class Sleepers {
   //  }
   //}
 
-PVector sleeperVelocity;
-float sleeperYTop;
-float sleeperYBottom;
+  //PVector sleeperVelocity;
+  //float sleeperYTop;
+  //float sleeperYBottom;
 
-  Sleepers(float sleeperTop) {
-    
-    sleeperYTop = sleeperTop;
-    sleeperYBottom = map(sleeperYTop, horizon, height, 0, 20);
-    sleeperVelocity = new PVector(0,0); 
-  }
+  //  Sleepers(float sleeperTop) {
 
-  void drawSingleSleeper() {
+  //    sleeperYTop = sleeperTop;
+  //    sleeperYBottom = map(sleeperYTop, horizon, height, 0, 20);
+  //    sleeperVelocity = new PVector(0,0);
+  //  }
 
-    rectMode(CORNER);
+  //  void drawSingleSleeper() {
 
-    sleeperPosY = map(y1, 0, 400, horizon, 400);
+  //    rectMode(CORNERS);
 
-    fill(130, 85, 60);
-    rect(0, sleeperYTop, width, sleeperYBottom);
-  }
-}
+  //    sleeperPosY = map(y1, 0, 400, horizon, 400);
+
+  //    fill(130, 85, 60);
+  //    rect(0, sleeperYTop, width, sleeperYBottom);
+  //  }
+  //}

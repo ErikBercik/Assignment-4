@@ -2,8 +2,6 @@ class Cab {
 
   void drawCab() {
 
-    rectMode(CORNER);
-
     /////////////CAB//////////////
 
     //window left
