@@ -1,11 +1,14 @@
 //import org.gicentre.handy.*;
+import processing.sound.*;
 
 //HandyRenderer h;
+SoundFile trainNoise;
 
 Rails rails;
 Sleepers sleepers;
 Cab cab;
 Engine engine;
+Sleeper sleeper;
 
 float horizon = 80.0;
 float y1;
@@ -14,22 +17,28 @@ float mouseConstrainX;
 float cameraPosX; //everything will be referenced on this
 float trainSpeed;
 float t = 0;
+float gap;
 float cameraShakeX;
 float cameraShakeY;
+float yTop;
+float yBottom;
+float buttonX = 525.0;
+float buttonY = 362.0;
+
 PImage imgCab;
 PImage spriteSprite;
+PImage imgMenu;
+
 PVector velocity; //this will only be in y direction
-PVector acceleration; //this will only be in y direction
+PVector acceleration; //this will be acceleration in y direction
+
 boolean engineOn = false;
-float gap;
+boolean buttonOn = false;
+boolean drawTrain = false;
 
+Sleeper[] sleeperArray = new Sleeper[20];
 
-  float yTop;
-  float yBottom;
-  float x;
-
-
-//Sleepers[] sleeperArray = new Sleepers[20];
+/////////////SETUP//////////////
 
 void setup() {
 
@@ -39,6 +48,8 @@ void setup() {
 
   //  h = new HandyRenderer(this); //handy renderer
 
+  trainNoise = new SoundFile(this, "trainnoise.wav"); //from https://pixabay.com/sound-effects/search/train/
+
   //horizon outline
   line(0, 80, width, 80);
 
@@ -47,12 +58,57 @@ void setup() {
   cab = new Cab();
   imgCab = loadImage("Cab.png");
   spriteSprite = loadImage("Sprite.PNG");
+  imgMenu = loadImage("Menu.png");
+  //sleeper = new Sleeper();
+
+  velocity = new PVector(0, 1);
+  acceleration = new PVector(0, 2);
+
   engine = new Engine();
 
-
+  for (int i = 0; i < sleeperArray.length; i++) {
+    sleeperArray[i] = new Sleeper();
+  }
 }
 
 void draw() {
+
+
+
+  if (drawTrain == false) {
+    drawMenu();
+  } else {
+    drawTrain();
+  }
+  if (drawTrain == true && engineOn == true) {
+    acceleration.y = pow(acceleration.y, 1.1);
+    velocity.y = velocity.y + acceleration.y;
+    trainNoise.play();
+  }
+}
+
+/////////////INPUTS//////////////
+
+//this is the code to toggle the menu or train
+void keyPressed() {
+
+  if (keyCode == TAB) {
+    drawTrain = !drawTrain;
+  }
+}
+
+//this is the code to drive the train
+void mousePressed() {
+
+  if (mouseX > buttonX && mouseX < buttonX+60 && mouseY > buttonY && mouseY < buttonY+25) {
+    buttonOn = !buttonOn;
+  }
+}
+
+/////////////THE CODE//////////////
+
+//this is the code to make sure the train is being drawn
+void drawTrain() {
 
   rectMode(CORNERS);
 
@@ -69,9 +125,6 @@ void draw() {
   mouseConstrainX = constrain(mouseX, 0, 400);
   cameraPosX = map(mouseConstrainX, 400, 0, width/2-20, width/2+20);
 
-  //sky
-  fill(160, 200, 225);
-  rect(0, 0, width, 80);
   //ground
   fill(180, 165, 150);
   rect(0, horizon, width, height); //Base
@@ -80,9 +133,17 @@ void draw() {
   //sleepers.drawSleepers();
   //sleepers.drawSingleSleeper();
   //for (int i = 0; i < sleeperArray.length; i++) {
-  //  sleeperArray[i].drawSingleSleeper();
-  //}
-  sleepers.drawSleepers();
+  //   sleeperArray[i].drawSleepers();
+  // }
+  //sleepers.drawSleepers();
+
+  for (int i = 0; i < sleeperArray.length; i++) {
+    sleeperArray[i].drawSleeper(velocity.y);
+  }
+
+  //sky
+  fill(160, 200, 225);
+  rect(0, 0, width, 80);
 
   //grass on the sides of the rail (thanks for the idea, it works much better, trapezoids suck, jk love them)
   fill(180, 165, 150);

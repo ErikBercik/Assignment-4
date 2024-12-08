@@ -1,14 +1,9 @@
 class Sleepers {
 
-
-  float yTop;
-  float yBottom;
-  float x;
-
   void drawSleepers() {
 
-    for (x = 0; x < height; x = (1+x)*1.3) {
-      drawSleeper(x);
+    for (velocity.y = 0; velocity.y < height; velocity.y = (1+velocity.y)*1.3) {
+      drawSleeper(velocity.y);
     }
   }
 
@@ -20,48 +15,52 @@ class Sleepers {
     fill(130, 85, 60);
     rect(0, yTop + horizon, width, yBottom + horizon);
   }
-
 }
-  //void drawSleepers() {
+//void drawSleepers() {
 
-  //  /////////////SLEEPERS//////////////
+//  /////////////SLEEPERS//////////////
 
-  //  rectMode(CORNER);
+//  rectMode(CORNER);
 
-  //  //sleepers outline
-  //  //rect(0, 320, width, 40);
-  //  //rect(0, 260, width, 30);
-  //  //rect(0, 180, width, 18);
-  //  //rect(0, 80, width, 2);
-  //  //rect(0, 140, width, 10);
-  //  //rect(0, 100, width, 4);
+//  //sleepers outline
+//  //rect(0, 320, width, 40);
+//  //rect(0, 260, width, 30);
+//  //rect(0, 180, width, 18);
+//  //rect(0, 80, width, 2);
+//  //rect(0, 140, width, 10);
+//  //rect(0, 100, width, 4);
 
-  //  //sleeper width is based on distance to the cab vs horizon
-  //  for (y1 = 0; y1 < height; y1 = (y1 + 1)*1.3) {
-  //    fill(130, 85, 60);
-  //    rect(0, sleeperPosY, width, y1*0.07);
-  //    sleeperPosY = map(y1, 0, 400, horizon, 400);
-  //  }
-  //}
+//  //sleeper width is based on distance to the cab vs horizon
+//  for (y1 = 0; y1 < height; y1 = (y1 + 1)*1.3) {
+//    fill(130, 85, 60);
+//    rect(0, sleeperPosY, width, y1*0.07);
+//    sleeperPosY = map(y1, 0, 400, horizon, 400);
+//  }
+//}
 
-  //PVector sleeperVelocity;
-  //float sleeperYTop;
-  //float sleeperYBottom;
+//PVector sleeperVelocity;
+//float sleeperYTop;
+//float sleeperYBottom;
 
-  //  Sleepers(float sleeperTop) {
+//  Sleepers(float sleeperTop) {
 
-  //    sleeperYTop = sleeperTop;
-  //    sleeperYBottom = map(sleeperYTop, horizon, height, 0, 20);
-  //    sleeperVelocity = new PVector(0,0);
-  //  }
+//    sleeperYTop = sleeperTop;
+//    sleeperYBottom = map(sleeperYTop, horizon, height, 0, 20);
+//    sleeperVelocity = new PVector(0,0);
+//  }
 
-  //  void drawSingleSleeper() {
+//  void drawSingleSleeper() {
 
-  //    rectMode(CORNERS);
+//    rectMode(CORNERS);
 
-  //    sleeperPosY = map(y1, 0, 400, horizon, 400);
+//    sleeperPosY = map(y1, 0, 400, horizon, 400);
 
-  //    fill(130, 85, 60);
-  //    rect(0, sleeperYTop, width, sleeperYBottom);
-  //  }
-  //}
+//    fill(130, 85, 60);
+//    rect(0, sleeperYTop, width, sleeperYBottom);
+//  }
+//}
+//     if (engineOn == true) { 
+   
+//acceleration.y = 5;
+
+//    }

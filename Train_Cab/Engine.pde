@@ -14,9 +14,9 @@ class Engine {
 
   void drawEngine() {
 
-    if (mousePressed == true) {
+    if (buttonOn == true) {
       engineOn = true;
-    } else if (keyPressed == true) {
+    } else if (buttonOn == false) {
       engineOn = false;
     }
   }
